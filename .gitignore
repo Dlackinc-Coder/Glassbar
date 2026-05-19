@@ -1,0 +1,15 @@
+# Quickshell
+*.qmlc
+*.jsc
+*.cache
+
+# Editor
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Local configs
+colors.json
