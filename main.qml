@@ -5,4 +5,6 @@ import "bars"
 
 ShellRoot {
     TopBar {}
+
+    SidePanel{}
 }

@@ -12,85 +12,85 @@ Pill {
 
     content: [
 
-    Row {
-        spacing: 8
+        Row {
+            spacing: 8
 
-        Repeater {
-            model: Hyprland.workspaces
+            Repeater {
+                model: Hyprland.workspaces
 
-            Rectangle {
-                required property var modelData
+                Rectangle {
+                    required property var modelData
 
-                readonly property int wsId:
+                    readonly property int wsId:
                     modelData.id
 
-                readonly property bool isFocused:
+                    readonly property bool isFocused:
                     modelData.focused
 
-                readonly property bool occupied:
+                    readonly property bool occupied:
                     modelData.lastIpcObject.windows > 0
 
-                property bool hovered:
+                    property bool hovered:
                     mouse.containsMouse
 
-                width:
+                    width:
                     isFocused ? 20 : 8
 
-                height: 8
+                    height: 8
 
-                radius: 4
+                    radius: 4
 
-                color:
+                    color:
                     isFocused
                     ? Style.primary
                     : occupied
-                        ? Style.textPrimary
-                        : Style.textMuted
+                    ? Style.textPrimary
+                    : Style.textMuted
 
-                opacity:
+                    opacity:
                     isFocused
                     ? 1.0
                     : hovered
-                        ? 0.8
-                        : 0.45
+                    ? 0.8
+                    : 0.45
 
-                Behavior on width {
-                    NumberAnimation {
-                        duration: 200
-                        easing.type:
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 200
+                            easing.type:
                             Easing.OutQuint
+                        }
                     }
-                }
 
-                Behavior on color {
-                    ColorAnimation {
-                        duration: 200
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 200
+                        }
                     }
-                }
 
-                Behavior on opacity {
-                    NumberAnimation {
-                        duration: 150
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: 150
+                        }
                     }
-                }
 
-                MouseArea {
-                    id: mouse
+                    MouseArea {
+                        id: mouse
 
-                    anchors.fill: parent
+                        anchors.fill: parent
 
-                    hoverEnabled: true
+                        hoverEnabled: true
 
-                    cursorShape:
+                        cursorShape:
                         Qt.PointingHandCursor
 
-                    onClicked:
+                        onClicked:
                         Hyprland.dispatch(
-                            `workspace ${wsId}`
+                        `workspace ${wsId}`
                         )
+                    }
                 }
             }
         }
-    }
-]
+    ]
 }
